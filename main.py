@@ -17,7 +17,7 @@ async def suggest_command(message: types.Message):
     if (not message.text or not message.text.startswith("/suggest")) and (not message.caption or not message.caption.startswith("/suggest")):
         return
     mtext = message.text if message.text else message.caption
-    suggestion = mtext.removeprefix("/suggest").strip()
+    suggestion = mtext.replace("/suggest", "").strip()
     if suggestion == "":
         await message.answer("Нельзя отправить пустое предложение! Используйте /suggest <текст>.")
     elif len(suggestion) < 10:
