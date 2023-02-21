@@ -24,7 +24,7 @@ async def suggest_command(message: types.Message):
         await message.answer("Предложение должно быть не меньше 10 символов.")
     elif len(suggestion) > 1000:
         await message.answer("Предложение должно быть не больше 1000 символов.")
-    elif time.time() - suggestion_times.get(message.from_user.id, 0) < 10:
+    elif time.time() - suggestion_times.get(message.from_user.id, 0) < 600:
         await message.answer("Предложения можно отправлять не чаще чем раз в 10 минут.")
     else:
         op_message = await bot.send_message(config.MODER_CHAT_ID, f"Предложение от {message.from_user.full_name}. Отправлено {message.date.strftime('%d.%m.%Y %H:%M')}.\n{suggestion}")
