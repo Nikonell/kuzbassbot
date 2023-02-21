@@ -1,0 +1,14 @@
+[Unit]
+Description=Kuzbass Telegram Bot
+After=network.target
+
+[Service]
+User=root
+Group=root
+
+WorkingDirectory=/home/root/kuzbassbot/
+Environment="PYTHONPATH=/home/root/kuzbassbot/"
+ExecStart=/home/root/kuzbassbot/.venv/bin/python /home/root/kuzbassbot/main.py
+
+[Install]
+WantedBy=multi-user.target
